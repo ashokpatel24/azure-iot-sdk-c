@@ -348,14 +348,17 @@ else()
     set(iothub_def_file ./src/iothub_client_dll.def)
 endif()
 
-add_library(iothub_client_dll SHARED
-    ${iothub_client_c_files} 
-    ${iothub_client_h_files}
-    ${iothub_def_file}
-)
-target_link_libraries(iothub_client_dll ${iothub_client_libs})
-if(NOT WIN32)
-set_target_properties(iothub_client_dll PROPERTIES OUTPUT_NAME "iothub_client")
+# IOS is defined in the iOS toolchain file
+if (NOT IOS)
+    add_library(iothub_client_dll SHARED
+        ${iothub_client_c_files} 
+        ${iothub_client_h_files}
+        ${iothub_def_file}
+    )
+    target_link_libraries(iothub_client_dll ${iothub_client_libs})
+    if(NOT WIN32)
+        set_target_properties(iothub_client_dll PROPERTIES OUTPUT_NAME "iothub_client")
+    endif()
 endif()
 
 add_library(iothub_client
