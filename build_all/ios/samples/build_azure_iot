@@ -27,19 +27,8 @@ do
 done
 
 pushd ..
-mkdir -p azureiotiosbuild
 cd azureiotiosbuild
 pwd
-
-
-if [ ! -d ./azure-iot-sdk-c ]
-then
-	git clone --recursive -b ios https://github.com/azure/azure-iot-sdk-c.git
-	pushd azure-iot-sdk-c/deps/uhttp/deps/c-utility
-	git checkout ios
-	git pull
-	popd
-fi
 
 BUILDROOT="`pwd`"
 
