@@ -20,7 +20,7 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 
 `git clone -b ios --recursive https://github.com/Azure/azure-iot-sdk-c.git`
 
-#### 4. Move the 'azure-iot-sdk-c/build_all/ios/samples' directory into '<working>'
+#### 4. Move the 'azure-iot-sdk-c/build_all/ios/samples' directory into `<working>`
 
 `mv azure-iot-sdk-c/build_all/ios/samples ..`
 
