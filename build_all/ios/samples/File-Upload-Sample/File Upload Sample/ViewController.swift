@@ -1,16 +1,12 @@
-//
-//  ViewController.swift
-//  File Upload Sample
-//
-//  Created by Mark Radbourne on 9/18/17.
-//  Copyright © 2017 Mark Radbourne. All rights reserved.
-//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 
 import UIKit
 
 class ViewController: UIViewController {
 
-    private let connectionString = "HostName=MarkRadHub1.azure-devices.net;DeviceId=TestDevice2;SharedAccessKey=bP2GRbeqnX+05pEO/cvkECx59rh8swSeWFJCkh82wgM="
+    private let connectionString = "<put valid connection string here>"
     
     // IoT hub handle
     public var iotHubClientHandle: IOTHUB_CLIENT_HANDLE!;

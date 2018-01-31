@@ -1,16 +1,12 @@
-//
-//  ViewController.swift
-//  HTTP Client Sample
-//
-//  Created by Mark Radbourne on 9/18/17.
-//  Copyright © 2017 Mark Radbourne. All rights reserved.
-//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 
 import UIKit
 
 class ViewController: UIViewController {
     
-    private let connectionString = "HostName=MarkRadHub1.azure-devices.net;DeviceId=TestDevice2;SharedAccessKey=bP2GRbeqnX+05pEO/cvkECx59rh8swSeWFJCkh82wgM="
+    private let connectionString = "<put valid connection string here>"
     
     // Select your protocol of choice: MQTT_Protocol, AMQP_Protocol or HTTP_Protocol
     // Note: HTTP_Protocol is not currently supported

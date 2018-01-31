@@ -1,6 +1,6 @@
-//
-//  Use this file to import your target's public headers that you would like to expose to Swift.
-//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 
 #ifndef azureiot_Bridging_Header_h
 #define azureiot_Bridging_Header_h

@@ -1,10 +1,6 @@
-//
-//  AppDelegate.swift
-//  HTTP Client Sample
-//
-//  Created by Mark Radbourne on 9/18/17.
-//  Copyright © 2017 Mark Radbourne. All rights reserved.
-//
+// Copyright (c) Microsoft. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
 
 import UIKit
 

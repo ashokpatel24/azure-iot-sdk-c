@@ -27,8 +27,9 @@ contact [opencode@microsoft.com](mailto:opencode@microsoft.com) with any additio
 #### 5. Run the library build script
 
 `cd ../samples`</br>
-`./build_azure_iot`
+`./build_azure_iot.sh`
 
 #### 6. Run the samples
 
-You can now open and run any of the samples in the `<working>/samples` directory
+You can now open and run any of the samples in the `<working>/samples` directory. 
+Don't forget to replace the connection strings in the samples with a valid connection string.
