@@ -1,0 +1,60 @@
+# Podspec files like this one are Ruby code
+
+Pod::Spec.new do |s|
+  s.name             = 'AzureIoTSDKs'
+  s.version          = '0.0.1'
+  s.summary          = 'Unfinished AzureIoTSDKs preview library for CocoaPods.'
+
+# This description is used to generate tags and improve search results.
+#   * Think: What does it do? Why did you write it? What is the focus?
+#   * Try to keep it short, snappy and to the point.
+#   * Write the description between the DESC delimiters below.
+#   * Finally, don't worry about the indent, CocoaPods strips it!
+
+  s.description      = <<-DESC
+This is an unfinished (and non-functional) preview CocoaPods 
+release of the Azure C SDKs.
+                       DESC
+
+  s.homepage         = 'https://github.com/azure/azure-iot-sdk-c'
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.author           = { 'Roy Sprowl' => 'v-royspr@microsoft.com' }
+  s.source           = { :git => 'https://github.com/Azure/azure-iot-sdk-c.git', :branch => 'ios-pod' }
+
+  s.ios.deployment_target = '8.0'
+
+  s.source_files = 
+    'deps/parson/parson.{h,c}', 
+    'iothub_client/src/*.c', 
+    'iothub_client/inc/*.h'
+  
+  # This bash command is performed after the git repo is cloned. It puts
+  # the SDK header files under a single root directory, which either
+  # either CocoaPods or XCode demands. 
+  s.prepare_command = <<-CMD
+    mkdir -p inc
+    #mv deps/parson/*.h inc
+    #cp iothub_client/inc inc/azure_c_shared_utility
+    #cp pal/objective-c/*.c src
+    #cp pal/objective-c/*.h inc/azure_c_shared_utility
+  CMD
+  
+  #s.source_files = <<-SRC_FILES
+  #    'deps/parson/*.{h,c}', 
+  #    'iothub_client/src/*.c' 
+  #SRC_FILES
+  
+  # The header_mappings_dir is a location where the header files directory structure
+  # is preserved.  If not provided the headers files are flattened.
+  s.header_mappings_dir = 'inc/'
+
+  s.public_header_files = 'deps/parson/*.h', 'iothub_client/inc/*.h'
+  
+  s.xcconfig = {
+    'USE_HEADERMAP' => 'NO',
+    'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/AzureIoTUtility/inc/"',
+    'ALWAYS_SEARCH_USER_PATHS' => 'NO'
+  }
+  
+  s.dependency 'AzureIoTUtility'
+end
