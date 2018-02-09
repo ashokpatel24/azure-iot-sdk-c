@@ -22,33 +22,28 @@ release of the Azure C SDKs.
   s.source           = { :git => 'https://github.com/Azure/azure-iot-sdk-c.git', :branch => 'ios-pod' }
 
   s.ios.deployment_target = '8.0'
-
-  s.source_files = 
-    'deps/parson/parson.{h,c}', 
-    'iothub_client/src/*.c', 
-    'iothub_client/inc/*.h'
   
   # This bash command is performed after the git repo is cloned. It puts
   # the SDK header files under a single root directory, which either
   # either CocoaPods or XCode demands. 
   s.prepare_command = <<-CMD
     mkdir -p inc
-    #mv deps/parson/*.h inc
-    #cp iothub_client/inc inc/azure_c_shared_utility
-    #cp pal/objective-c/*.c src
-    #cp pal/objective-c/*.h inc/azure_c_shared_utility
+    set +e
+    mv deps/parson/parson.h inc
+    mv iothub_client/inc/*.h inc
+    set -e
   CMD
-  
-  #s.source_files = <<-SRC_FILES
-  #    'deps/parson/*.{h,c}', 
-  #    'iothub_client/src/*.c' 
-  #SRC_FILES
+
+  s.source_files = 
+    'inc/*.h',
+    'deps/parson/parson.c', 
+    'iothub_client/src/*.c' 
   
   # The header_mappings_dir is a location where the header files directory structure
   # is preserved.  If not provided the headers files are flattened.
   s.header_mappings_dir = 'inc/'
 
-  s.public_header_files = 'deps/parson/*.h', 'iothub_client/inc/*.h'
+  s.public_header_files = 'inc/*.h'
   
   s.xcconfig = {
     'USE_HEADERMAP' => 'NO',
@@ -56,5 +51,5 @@ release of the Azure C SDKs.
     'ALWAYS_SEARCH_USER_PATHS' => 'NO'
   }
   
-  s.dependency 'AzureIoTUtility'
+  s.dependency 'AzureIoTUtility' 'AzureIoTuAmqp'
 end
