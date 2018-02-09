@@ -1,7 +1,7 @@
 # Podspec files like this one are Ruby code
 
 Pod::Spec.new do |s|
-  s.name             = 'AzureIoTSDKs'
+  s.name             = 'AzureIoTHubClient'
   s.version          = '0.0.1'
   s.summary          = 'Unfinished AzureIoTSDKs preview library for CocoaPods.'
 
@@ -18,7 +18,7 @@ release of the Azure C SDKs.
 
   s.homepage         = 'https://github.com/azure/azure-iot-sdk-c'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
-  s.author           = { 'Roy Sprowl' => 'v-royspr@microsoft.com' }
+  s.author           = { 'Microsoft' => '' }
   s.source           = { :git => 'https://github.com/Azure/azure-iot-sdk-c.git', :branch => 'ios-pod' }
 
   s.ios.deployment_target = '8.0'
@@ -27,11 +27,10 @@ release of the Azure C SDKs.
   # the SDK header files under a single root directory, which either
   # either CocoaPods or XCode demands. 
   s.prepare_command = <<-CMD
+  git submodule update --init deps/parson
     mkdir -p inc
-    set +e
-    mv deps/parson/parson.h inc
-    mv iothub_client/inc/*.h inc
-    set -e
+    cp deps/parson/parson.h inc
+    cp iothub_client/inc/*.h inc
   CMD
 
   s.source_files = 
@@ -47,9 +46,12 @@ release of the Azure C SDKs.
   
   s.xcconfig = {
     'USE_HEADERMAP' => 'NO',
-    'HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/AzureIoTUtility/inc/"',
+    'HEADER_SEARCH_PATHS' => '"${SRCROOT}/AzureIoTHubClient/inc/" "${SRCROOT}/AzureIoTUtility/inc/" "${SRCROOT}/AzureIoTuMqtt/inc/" "${SRCROOT}/AzureIoTuAmqp/inc/"',
     'ALWAYS_SEARCH_USER_PATHS' => 'NO'
   }
   
-  s.dependency 'AzureIoTUtility' 'AzureIoTuAmqp'
+  s.dependency 'AzureIoTUtility', '0.0.0.1-pre-release' 
+  s.dependency 'AzureIoTuAmqp', '0.0.0.1-pre-release' 
+  s.dependency 'AzureIoTuMqtt', '0.0.0.1-pre-release' 
+
 end
