@@ -2,7 +2,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'AzureIoTHubClient'
-  s.version          = '0.0.1'
+  s.version          = '0.0.0.1-pre-release.0.0.2'
   s.summary          = 'Unfinished AzureIoTSDKs preview library for CocoaPods.'
 
 # This description is used to generate tags and improve search results.
@@ -27,17 +27,19 @@ release of the Azure C SDKs.
   # the SDK header files under a single root directory, which either
   # either CocoaPods or XCode demands. 
   s.prepare_command = <<-CMD
-  git submodule update --init deps/parson
+    git submodule update --init deps/parson
     mkdir -p inc
     cp deps/parson/parson.h inc
     cp iothub_client/inc/*.h inc
+    cp serializer/inc/*.h inc
   CMD
 
   s.source_files = 
     'inc/*.h',
     'deps/parson/parson.c', 
-    'iothub_client/src/*.c' 
-  
+    'iothub_client/src/*.c',
+    'serializer/src/*.c' 
+
   # The header_mappings_dir is a location where the header files directory structure
   # is preserved.  If not provided the headers files are flattened.
   s.header_mappings_dir = 'inc/'
@@ -50,8 +52,8 @@ release of the Azure C SDKs.
     'ALWAYS_SEARCH_USER_PATHS' => 'NO'
   }
   
-  s.dependency 'AzureIoTUtility', '0.0.0.1-pre-release' 
-  s.dependency 'AzureIoTuAmqp', '0.0.0.1-pre-release' 
-  s.dependency 'AzureIoTuMqtt', '0.0.0.1-pre-release' 
+  s.dependency 'AzureIoTUtility', '0.0.0.1-pre-release.0.0.1' 
+  s.dependency 'AzureIoTuAmqp', '0.0.0.1-pre-release.0.0.1' 
+  s.dependency 'AzureIoTuMqtt', '0.0.0.1-pre-release.0.0.1' 
 
 end

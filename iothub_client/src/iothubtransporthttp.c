@@ -1128,7 +1128,7 @@ static STRING_HANDLE make1EventJSONitem(PDLIST_ENTRY item, size_t *messageSizeCo
                 }
                 else
                 {
-                    size_t propertiesSize;
+                    size_t propertiesSize = 0;
                     if (!(
                         (STRING_concat_with_STRING(result, encoded) == 0) &&
                         (STRING_concat(result, "\"") == 0) && /*\" because closing value*/
@@ -1180,7 +1180,7 @@ static STRING_HANDLE make1EventJSONitem(PDLIST_ENTRY item, size_t *messageSizeCo
                 }
                 else
                 {
-                    size_t propertiesSize;
+                    size_t propertiesSize = 0;
                     if (!(
                         (STRING_concat_with_STRING(result, asJson) == 0) &&
                         (STRING_concat(result, ",\"base64Encoded\":false") == 0) &&
